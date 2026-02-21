@@ -71,7 +71,8 @@ function createNode(coord, player, posLabel, role, isWS) {
   btn.style.left = `${coord.x}%`;
   btn.style.top = `${coord.y}%`;
 
-  const name = player?.name ?? '—';
+  const fullName = player?.name ?? '—';
+  const lastName = player?.name ? player.name.split(' ').slice(-1)[0] : '—';
   const statLines = getNodeStats(player, role);
 
   // Build badge HTML
@@ -98,7 +99,8 @@ function createNode(coord, player, posLabel, role, isWS) {
 
   btn.innerHTML = `
     <div class="node-bubble">
-      <div class="node-name">${escapeHtml(name)}</div>
+      <div class="node-name node-name-full">${escapeHtml(fullName)}</div>
+      <div class="node-name node-name-short">${escapeHtml(lastName)}</div>
       ${statLines.map(s => `<div class="node-stat">${escapeHtml(s)}</div>`).join('')}
       ${badgeHtml}
     </div>
@@ -108,7 +110,7 @@ function createNode(coord, player, posLabel, role, isWS) {
     openPlayerCard(player, posLabel, role);
   });
 
-  btn.setAttribute('aria-label', `${posLabel}: ${name}`);
+  btn.setAttribute('aria-label', `${posLabel}: ${fullName}`);
 
   return btn;
 }

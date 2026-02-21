@@ -272,12 +272,6 @@
     font-size: 0.62rem;
   }
 
-  .node-retired-num,
-  .node-hof,
-  .node-awards {
-    display: none;
-  }
-
   .season-record {
     font-size: 0.65rem;
   }

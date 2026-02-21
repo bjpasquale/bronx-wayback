@@ -103,6 +103,10 @@
   line-height: 1.2;
 }
 
+.node-name-short {
+  display: none;
+}
+
 .node-stat {
   font-size: 0.6rem;
   color: var(--text-secondary);
@@ -142,12 +146,17 @@
     border-radius: var(--radius-sm);
   }
 
-  .node-name {
+  .node-name-full {
+    display: none;
+  }
+
+  .node-name-short {
+    display: block;
     font-size: 0.58rem;
     max-width: 65px;
   }
 
   .node-stat {
-    display: none;
+    font-size: 0.5rem;
   }
 }
