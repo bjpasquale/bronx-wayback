@@ -1,0 +1,153 @@
+/* Diamond — Field, Player Nodes, Glass Effects */
+.diamond-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.diamond {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--navy-dark);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--glass-border);
+}
+
+.diamond-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.diamond-nodes {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-nodes);
+}
+
+/* World Series diamond glow */
+.diamond.ws-won {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-gold);
+}
+
+.diamond.ws-lost {
+  border-color: var(--silver);
+}
+
+/* Player Node */
+.player-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-spring);
+  z-index: var(--z-nodes);
+}
+
+.player-node:hover,
+.player-node:focus-visible {
+  transform: translate(-50%, -50%) scale(1.08);
+  z-index: calc(var(--z-nodes) + 1);
+}
+
+.player-node:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.node-bubble {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
+  text-align: center;
+  min-width: 80px;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--duration-fast) ease,
+              border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+
+.player-node:hover .node-bubble {
+  background: var(--glass-hover);
+  border-color: var(--silver);
+}
+
+/* WS champion year gold treatment */
+.player-node.ws-glow .node-bubble {
+  border-color: var(--gold);
+  box-shadow: 0 0 12px var(--gold-glow);
+}
+
+.node-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 110px;
+  line-height: 1.2;
+}
+
+.node-stat {
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  line-height: 1;
+}
+
+/* Responsive nodes */
+@media (max-width: 768px) {
+  .diamond {
+    aspect-ratio: 4 / 3;
+  }
+
+  .node-bubble {
+    padding: 4px 8px;
+    min-width: 64px;
+  }
+
+  .node-name {
+    font-size: 0.65rem;
+    max-width: 80px;
+  }
+
+  .node-stat {
+    font-size: 0.55rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .diamond {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-md);
+  }
+
+  .node-bubble {
+    padding: 3px 6px;
+    min-width: 54px;
+    border-radius: var(--radius-sm);
+  }
+
+  .node-name {
+    font-size: 0.58rem;
+    max-width: 65px;
+  }
+
+  .node-stat {
+    display: none;
+  }
+}

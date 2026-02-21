@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bronx Wayback Machine</title>
+  <meta name="description" content="Explore 123 years of Bronx baseball history, one roster at a time.">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/diamond.css">
+  <link rel="stylesheet" href="css/controls.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/badges.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-logo">
+        <span class="loading-ny">NY</span>
+      </div>
+      <p class="loading-text">Loading 123 years of Bronx baseball history...</p>
+      <div class="loading-bar">
+        <div class="loading-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div id="app" class="app hidden">
+
+    <!-- Header -->
+    <header class="header">
+      <h1 class="site-title">
+        <span class="title-bronx">Bronx</span>
+        <span class="title-wayback">Wayback Machine</span>
+      </h1>
+
+      <!-- Year Navigation -->
+      <nav class="year-nav" aria-label="Year navigation">
+        <button id="prev-year" class="year-btn" aria-label="Previous year">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="year-pill-wrapper">
+          <span id="year-pill" class="year-pill">1903</span>
+          <span id="ws-trophy" class="ws-trophy hidden" aria-label="World Series">🏆</span>
+          <span id="season-record" class="season-record"></span>
+        </div>
+        <button id="next-year" class="year-btn" aria-label="Next year">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4L13 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </nav>
+    </header>
+
+    <!-- World Series Banner -->
+    <div id="ws-banner" class="ws-banner hidden">
+      <span class="ws-banner-text"></span>
+    </div>
+
+    <!-- On This Date Banner -->
+    <div id="otd-banner" class="otd-banner hidden">
+      <span class="otd-text" id="otd-text"></span>
+    </div>
+
+    <!-- Era Navigation -->
+    <nav id="era-nav" class="era-nav" aria-label="Era navigation">
+      <div class="era-pills"></div>
+    </nav>
+
+    <!-- Era Quote -->
+    <div id="era-quote" class="era-quote"></div>
+
+    <!-- Diamond -->
+    <div class="diamond-wrapper">
+      <div id="diamond" class="diamond">
+        <img src="assets/yankee-stadium.png" alt="" class="diamond-bg" aria-hidden="true">
+        <div id="diamond-nodes" class="diamond-nodes"></div>
+      </div>
+    </div>
+
+    <!-- Timeline Slider -->
+    <div class="timeline-wrapper">
+      <label for="timeline" class="sr-only">Year timeline</label>
+      <div class="timeline-labels">
+        <span id="timeline-start">1903</span>
+        <span id="timeline-era-label" class="timeline-era-label"></span>
+        <span id="timeline-end">2025</span>
+      </div>
+      <div class="timeline-track">
+        <input type="range" id="timeline" class="timeline" min="0" max="122" value="122">
+        <div id="timeline-markers" class="timeline-markers"></div>
+      </div>
+    </div>
+
+    <!-- Leaderboards -->
+    <div id="leaderboards" class="leaderboards-wrapper"></div>
+
+    <!-- Search -->
+    <div class="search-wrapper">
+      <div class="search-box">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input type="search" id="search-input" class="search-input" placeholder="Search players across all years..." autocomplete="off">
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+
+  </div>
+
+  <!-- Player Card Dialog -->
+  <dialog id="player-card" class="player-card-dialog">
+    <div class="card-pinstripes"></div>
+    <button id="close-card" class="close-card" aria-label="Close">&times;</button>
+    <div class="card-header">
+      <h2 id="card-name" class="card-name"></h2>
+      <p id="card-nickname" class="card-nickname"></p>
+      <p id="card-meta" class="card-meta"></p>
+      <div id="card-badges" class="card-badges"></div>
+    </div>
+    <div id="card-stats" class="card-stats"></div>
+    <div id="card-career" class="card-career"></div>
+  </dialog>
+
+  <script type="module" src="js/app.js?v=3"></script>
+</body>
+</html>

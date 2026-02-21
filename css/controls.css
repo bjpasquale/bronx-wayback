@@ -1,0 +1,254 @@
+/* Controls — Year Nav, Era Pills, Timeline */
+
+/* Year Navigation */
+.year-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.year-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  transition: all var(--duration-fast) ease;
+}
+
+.year-btn:hover {
+  background: var(--glass-hover);
+  color: var(--white);
+  border-color: var(--silver);
+}
+
+.year-btn:active {
+  transform: scale(0.92);
+}
+
+.year-pill-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.year-pill {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  min-width: 5ch;
+  text-align: center;
+  transition: color var(--duration-normal) ease;
+}
+
+.year-pill.ws-year {
+  color: var(--gold);
+}
+
+.ws-trophy {
+  font-size: 1.4rem;
+  animation: trophyBounce 0.6s var(--ease-spring);
+}
+
+/* World Series Banner */
+.ws-banner {
+  width: 100%;
+  text-align: center;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  animation: bannerSlideIn var(--duration-normal) var(--ease-out);
+}
+
+.ws-banner.ws-won {
+  background: linear-gradient(135deg, var(--gold-dim), rgba(201, 168, 76, 0.08));
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+}
+
+.ws-banner.ws-lost {
+  background: rgba(196, 206, 212, 0.06);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+}
+
+.ws-banner-text {
+  display: inline;
+}
+
+/* Era Navigation */
+.era-nav {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.era-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.era-pills {
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-xs) 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.era-pill {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  transition: all var(--duration-fast) ease;
+}
+
+.era-pill:hover {
+  background: var(--glass-hover);
+  color: var(--white);
+  border-color: var(--silver);
+}
+
+.era-pill.active {
+  background: var(--navy-light);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* Era Quote */
+.era-quote {
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  min-height: 1.2em;
+  transition: opacity var(--duration-normal) ease;
+}
+
+/* Timeline */
+.timeline-wrapper {
+  width: 100%;
+  padding: 0 var(--space-sm);
+}
+
+.timeline-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.timeline-era-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.timeline-track {
+  position: relative;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.timeline {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--glass-border);
+  border-radius: 2px;
+  outline: none;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--navy-light);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+
+.timeline::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: var(--shadow-md);
+}
+
+.timeline.ws-year::-webkit-slider-thumb {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 8px var(--gold-glow);
+}
+
+.timeline::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--navy-light);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+/* Timeline WS markers */
+.timeline-markers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-marker {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  transform: translateX(-50%);
+  opacity: 0.7;
+}
+
+.timeline-marker.ws-lost-marker {
+  background: var(--silver);
+  opacity: 0.4;
+}
+
+@media (max-width: 480px) {
+  .era-pills {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .year-pill {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,291 @@
+/* Badges, Awards, Season Record, OTD Banner, Leaderboards */
+
+/* --- Node Badges (retired number + HOF) --- */
+.node-badges {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.node-retired-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border-radius: 8px;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-size: 0.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.node-hof {
+  font-size: 0.45rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  text-shadow: 0 0 4px var(--gold-glow);
+}
+
+.node-awards {
+  display: flex;
+  gap: 1px;
+  font-size: 0.5rem;
+  line-height: 1;
+}
+
+/* --- Season Record --- */
+.season-record {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  margin-left: var(--space-xs);
+}
+
+.season-record:not(:empty)::before {
+  content: '(';
+}
+
+.season-record:not(:empty)::after {
+  content: ')';
+}
+
+/* --- On This Date Banner --- */
+.otd-banner {
+  width: 100%;
+  text-align: center;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.12), rgba(201, 168, 76, 0.04));
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: var(--gold-light);
+  animation: bannerSlideIn var(--duration-normal) var(--ease-out);
+  cursor: pointer;
+  transition: background var(--duration-fast) ease;
+}
+
+.otd-banner:hover {
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.18), rgba(201, 168, 76, 0.08));
+}
+
+.otd-text::before {
+  content: '\01F4C5  ';
+}
+
+/* --- Card Nickname --- */
+.card-nickname {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--gold);
+  margin-bottom: var(--space-xs);
+  min-height: 0;
+}
+
+.card-nickname:empty {
+  display: none;
+}
+
+/* --- Card Badges --- */
+.card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.card-badges:empty {
+  display: none;
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.card-badge-hof {
+  background: linear-gradient(135deg, var(--gold), #b8942f);
+  color: var(--navy-dark);
+}
+
+.card-badge-retired {
+  background: var(--navy-light);
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+}
+
+.card-badge-mvp {
+  background: rgba(201, 168, 76, 0.15);
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+}
+
+.card-badge-cy {
+  background: rgba(201, 168, 76, 0.15);
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+}
+
+.card-badge-as {
+  background: rgba(100, 149, 237, 0.15);
+  border: 1px solid cornflowerblue;
+  color: #a8c4f0;
+}
+
+.card-badge-gg {
+  background: rgba(218, 165, 32, 0.15);
+  border: 1px solid goldenrod;
+  color: #f0d878;
+}
+
+.card-badge-ss {
+  background: rgba(192, 192, 192, 0.12);
+  border: 1px solid silver;
+  color: var(--silver-light);
+}
+
+.card-badge-roy {
+  background: rgba(144, 238, 144, 0.12);
+  border: 1px solid #7dca7d;
+  color: #a8e6a8;
+}
+
+/* --- Era Pill Year Range --- */
+.era-years {
+  display: block;
+  font-size: 0.55rem;
+  font-weight: 500;
+  opacity: 0.6;
+  margin-top: 1px;
+  letter-spacing: 0.02em;
+}
+
+/* --- Leaderboards --- */
+.leaderboards-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+}
+
+.leaderboard-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.leaderboard-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: var(--space-sm);
+  white-space: nowrap;
+}
+
+.leaderboard-icon {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.leaderboard-entry:last-child {
+  border-bottom: none;
+}
+
+.leaderboard-rank {
+  font-weight: 700;
+  color: var(--text-muted);
+  min-width: 18px;
+  text-align: left;
+}
+
+.leaderboard-entry:first-child .leaderboard-rank {
+  color: var(--gold);
+}
+
+.leaderboard-name {
+  flex: 1;
+  text-align: left;
+  margin-left: var(--space-xs);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.leaderboard-count {
+  font-weight: 700;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+  margin-left: var(--space-xs);
+}
+
+/* Responsive leaderboards */
+@media (max-width: 768px) {
+  .leaderboards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .leaderboards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .leaderboard-card {
+    padding: var(--space-sm);
+  }
+
+  .leaderboard-title {
+    font-size: 0.72rem;
+  }
+
+  .leaderboard-entry {
+    font-size: 0.62rem;
+  }
+
+  .node-retired-num,
+  .node-hof,
+  .node-awards {
+    display: none;
+  }
+
+  .season-record {
+    font-size: 0.65rem;
+  }
+}

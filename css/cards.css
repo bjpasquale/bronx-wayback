@@ -1,0 +1,245 @@
+/* Player Card Dialog — Baseball Card Style */
+.player-card-dialog {
+  position: fixed;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 0;
+  max-width: 420px;
+  width: calc(100% - 32px);
+  background: var(--navy);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  z-index: var(--z-dialog);
+}
+
+.player-card-dialog::backdrop {
+  background: rgba(10, 16, 32, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.player-card-dialog[open] {
+  animation: cardSlideIn var(--duration-normal) var(--ease-out);
+}
+
+/* Pinstripe overlay on card */
+.card-pinstripes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pinstripe) 0px,
+    var(--pinstripe) 1px,
+    transparent 1px,
+    transparent 19px
+  );
+  opacity: 0.5;
+}
+
+.close-card {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  color: var(--text-secondary);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: all var(--duration-fast) ease;
+}
+
+.close-card:hover {
+  background: var(--glass-hover);
+  color: var(--white);
+}
+
+/* Card header — colored band like a real baseball card */
+.card-header {
+  position: relative;
+  padding: var(--space-xl) var(--space-lg) var(--space-md);
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy-light));
+  border-bottom: 3px solid var(--gold);
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: var(--space-xs);
+}
+
+.card-meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Stats area */
+.card-stats {
+  position: relative;
+  padding: var(--space-lg);
+}
+
+.card-empty {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Hero stats — the 3 big numbers */
+.card-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+
+.hero-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Divider between hero and table */
+.card-divider {
+  height: 1px;
+  background: var(--glass-border);
+  margin: var(--space-md) 0;
+}
+
+/* Stat table — compact row like back of a baseball card */
+.card-stat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  margin-top: var(--space-sm);
+}
+
+.card-stat-table th {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 6px 4px;
+  text-align: center;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 0.65rem;
+}
+
+.card-stat-table td {
+  text-align: center;
+  padding: 8px 4px;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Career Year Chips */
+.card-career {
+  position: relative;
+  padding: 0 var(--space-lg) var(--space-lg);
+}
+
+.career-heading {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.career-years {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.career-chip {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  transition: all var(--duration-fast) ease;
+  cursor: pointer;
+}
+
+.career-chip:hover {
+  background: var(--glass-hover);
+  color: var(--white);
+  border-color: var(--silver);
+}
+
+.career-chip.current {
+  background: var(--navy-light);
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.career-chip.ws-chip {
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.career-chip .chip-trophy {
+  font-size: 0.6rem;
+  margin-left: 2px;
+}
+
+/* WS champion card glow */
+.player-card-dialog.ws-card .card-header {
+  border-bottom-color: var(--gold);
+  background: linear-gradient(135deg, var(--navy-dark), rgba(201, 168, 76, 0.15));
+}
+
+.player-card-dialog.ws-card .card-name {
+  color: var(--gold-light);
+}
+
+@media (max-width: 480px) {
+  .player-card-dialog {
+    max-width: 100%;
+    width: calc(100% - 16px);
+    border-radius: var(--radius-md);
+  }
+
+  .card-name {
+    font-size: 1.3rem;
+  }
+
+  .hero-value {
+    font-size: 1.6rem;
+  }
+
+  .card-hero-stats {
+    gap: var(--space-lg);
+  }
+
+  .card-stat-table {
+    font-size: 0.68rem;
+  }
+}
