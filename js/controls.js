@@ -273,7 +273,7 @@ function updateWSBanner(roster) {
 function updateSeasonRecord(state) {
   const rec = state.data?.seasonRecords?.[String(state.year)];
   if (rec) {
-    els.seasonRecord.textContent = `${rec.W}-${rec.L}`;
+    els.seasonRecord.textContent = `${rec.W}\u2013${rec.L}`;
   } else {
     els.seasonRecord.textContent = '';
   }

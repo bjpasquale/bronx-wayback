@@ -41,19 +41,12 @@
 
 /* --- Season Record --- */
 .season-record {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
-  margin-left: var(--space-xs);
-}
-
-.season-record:not(:empty)::before {
-  content: '(';
-}
-
-.season-record:not(:empty)::after {
-  content: ')';
+  text-align: center;
+  min-height: 1.2em;
 }
 
 /* --- On This Date Banner --- */
